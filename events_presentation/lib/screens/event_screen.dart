@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../data/Event.dart';
 import '../data/EventProvider.dart';
+import 'event_form.dart';
 import 'event_list.dart';
+import 'package:events_presentation/assets/constants.dart' as constants;
 
 class EventScreen extends StatefulWidget {
   const EventScreen({super.key});
@@ -56,6 +59,19 @@ class _EventScreenState extends State<EventScreen> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Event _event = Event(id: '',
+              nombre: '', categoria: '', fecha: '',
+              ciudad: '', lugar: '', detalle: '');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EventFormScreen(event: _event,isNew: true))
+          );
+        },
+        tooltip: constants.nuevo,
+        child: const Icon(Icons.add),
       ),
     );
   }

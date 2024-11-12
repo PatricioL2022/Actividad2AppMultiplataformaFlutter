@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../data/Event.dart';
 
 class EventItem extends StatelessWidget {
-  EventItem({required this.item});
+  const EventItem({required this.item});
 
   final Event item;
 
@@ -27,13 +27,19 @@ class EventItem extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text("Lugar: ${item.ciudad} - ${item.lugar}"),
-                    Text("Fecha: ${item.fecha} ${item.hora}"),
+                    Text("Fecha: ${item.fecha}"),
+                    Badge(
+                      label:  Text(item.categoria),
+                      backgroundColor: Colors.green
+                    ),
+
                   ],
                 ),
               ),
             ),
           ],
         ),
+
       ),
     );
   }

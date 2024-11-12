@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../data/Event.dart';
+import 'event_form.dart';
 import 'event_item.dart';
 import 'package:events_presentation/assets/constants.dart' as constants;
 
 class EventList extends StatelessWidget {
 
-  EventList({required this.items});
+  const EventList({required this.items});
   final List<Event>? items;
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,16 @@ class EventList extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: this.items!.length,
           itemBuilder: (context, item){
-            return EventItem(item:  this.items![item]);
+            //return EventItem(item:  this.items![item]);
+            return GestureDetector(
+              child: EventItem(item:  this.items![item]),
+              onTap: () => {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EventFormScreen(event: this.items![item],isNew: false,)),
+                )
+              },
+            );
           },
         )
 

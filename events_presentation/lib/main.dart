@@ -1,11 +1,24 @@
 import 'package:events_presentation/screens/event_form.dart';
 import 'package:events_presentation/screens/event_screen.dart';
+import 'package:events_presentation/screens/google_login.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'data/EventProvider.dart';
 import 'package:events_presentation/assets/constants.dart' as constants;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey:
+      "AIzaSyA_xEWA5B3yVUk5bfly9R1bxvERoueGrjo", // paste your api key here
+      appId:
+      "1:814426403207:web:34fcd87deb63a7ca912322", //paste your app id here
+      messagingSenderId: "814426403207", //paste your messagingSenderId here
+      projectId: "agendamiento-citas-medic-e6fd9", //paste your project id here
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -25,7 +38,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: EventFormScreen()
+          home:  Login() //EventFormScreen()
       ),
     );
   }

@@ -8,7 +8,6 @@ class Event {
   final String nombre;
   final String categoria;
   final String fecha;
-  final String hora;
   final String ciudad;
   final String lugar;
   final String detalle;
@@ -18,7 +17,6 @@ class Event {
     required this.nombre,
     required this.categoria,
     required this.fecha,
-    required this.hora,
     required this.ciudad,
     required this.lugar,
     required this.detalle,
@@ -29,7 +27,6 @@ class Event {
     "nombre": this.nombre,
     "categoria": this.categoria,
     "fecha": this.fecha,
-    "hora": this.hora,
     "ciudad":this.ciudad,
     "lugar": this.lugar,
     "detalle": this.detalle
@@ -41,22 +38,20 @@ class Event {
       'nombre': String nombre,
       'categoria': String categoria,
       'fecha': String fecha,
-      'hora': String hora,
       'ciudad': String ciudad,
       'lugar': String lugar,
       'detalle': String detalle
       } =>
           Event(
-            id: id,
-            nombre: nombre,
-            categoria: categoria,
-            fecha: fecha,
-            hora: hora,
-            ciudad: ciudad,
-            lugar: lugar,
-            detalle: detalle
+              id: id,
+              nombre: nombre,
+              categoria: categoria,
+              fecha: fecha,
+              ciudad: ciudad,
+              lugar: lugar,
+              detalle: detalle
           ),
-      _ => throw const FormatException('Failed to load evento.'),
+      _ => throw const FormatException('Failed to load event.'),
     };
   }
 }
