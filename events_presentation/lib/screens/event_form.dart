@@ -32,7 +32,7 @@ class EventFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateFormat format = new DateFormat("MM/dd/yyyy hh:mm");
+    DateFormat format = new DateFormat("yyyy-MM-dd hh:mm");
     DateTime dateTime;
     if(!this.isNew){
       dateTime = format.parse(this.event.fecha);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import '../data/Event.dart';
 import '../data/EventProvider.dart';
@@ -13,11 +14,13 @@ class EventScreen extends StatefulWidget {
   State<EventScreen> createState() => _EventScreenState();
 }
 
-class _EventScreenState extends State<EventScreen> {
+class _EventScreenState extends State<EventScreen>  with WidgetsBindingObserver {
   @override
   void initState() {
     Provider.of<EventProvider>(context, listen: false).getEventsData();
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
 
 
     //Se comenta ya que se va a usar FutureBuilder
@@ -68,7 +71,7 @@ class _EventScreenState extends State<EventScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => EventFormScreen(event: _event,isNew: true))
-          );
+          ).then((value)=> initState());
         },
         tooltip: constants.nuevo,
         child: const Icon(Icons.add),
