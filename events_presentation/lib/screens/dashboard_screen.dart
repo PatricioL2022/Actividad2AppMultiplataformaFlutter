@@ -1,3 +1,5 @@
+import 'package:events_presentation/data/constant.dart';
+import 'package:events_presentation/data/localdb.dart';
 import 'package:flutter/material.dart';
 import 'package:events_presentation/assets/constants.dart' as constants;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +12,7 @@ class DashBoardScreen extends StatelessWidget {
   ///
   DashBoardScreen({super.key});
   final SPHelper helper = SPHelper();
-
+  
   @override
   Widget build(BuildContext context) {
     String usuarioNombre="";
@@ -26,14 +28,25 @@ class DashBoardScreen extends StatelessWidget {
         throw _.toString();
       }
     }
+    Future<void> checkUserLog() async
+    {
+      final FirebaseAuth auth = await FirebaseAuth.instance;
+      final user = await auth.currentUser;
+      if(user != null)
+        {
+          constant.name = (await LocalDataSaver.getName())!;
+          constant.email = (await LocalDataSaver.getEmail())!;
+        }
+    }
     Future<void> getUserName() async {
       Map<String, String> settings = await helper.getSettings();
       usuarioNombre = settings['name'] ?? 'unknow';
-    };
+    }
+    checkUserLog();
     getUserName();
     return Scaffold(
         appBar: AppBar(
-          title: Text(constants.bienvenido+" "+usuarioNombre,textAlign: TextAlign.justify),
+          title: Text("${constants.bienvenido} ${constant.name}",textAlign: TextAlign.justify),
         ),
         body: ConstrainedBox(
           constraints: const BoxConstraints.expand(),

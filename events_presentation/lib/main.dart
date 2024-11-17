@@ -12,11 +12,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: const FirebaseOptions(
       apiKey:
-      "AIzaSyA_xEWA5B3yVUk5bfly9R1bxvERoueGrjo", // paste your api key here
+      "AIzaSyA0sRLtXM7Nowv96hTkpVrnIsIZI0hbaps", // paste your api key here
       appId:
-      "1:814426403207:web:34fcd87deb63a7ca912322", //paste your app id here
-      messagingSenderId: "814426403207", //paste your messagingSenderId here
-      projectId: "agendamiento-citas-medic-e6fd9", //paste your project id here
+      "1:728077414206:web:34fcd87deb63a7ca912322", //paste your app id here
+      messagingSenderId: "728077414206", //paste your messagingSenderId here
+      projectId: "events-presentation", //paste your project id here
     ),
   );
   runApp(const MyApp());

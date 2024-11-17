@@ -5,6 +5,7 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+
 android {
     namespace = "com.example.events_presentation"
     compileSdk = flutter.compileSdkVersion

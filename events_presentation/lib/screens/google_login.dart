@@ -1,4 +1,5 @@
 
+import 'package:events_presentation/data/localdb.dart';
 import 'package:flutter/material.dart';
 import 'package:events_presentation/assets/constants.dart' as constants;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,6 +34,13 @@ class Login extends StatelessWidget {
           accessToken: googleAuth?.accessToken,
           idToken: googleAuth?.idToken,
         );
+        final FirebaseAuth _auth = FirebaseAuth.instance;
+        final userCredential  = await _auth.signInWithCredential(credential);
+        final User? user = userCredential.user;
+        LocalDataSaver.saveLoginData(true);
+        LocalDataSaver.saveName(user!.displayName.toString());
+        LocalDataSaver.saveMail(user.email.toString());
+        LocalDataSaver.saveImg(user.photoURL.toString());
         name = googleUser!.displayName.toString();
         email = googleUser!.email.toString();
         saveUserName();
