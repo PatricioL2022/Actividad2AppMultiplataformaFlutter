@@ -1,4 +1,6 @@
 import 'package:events_presentation/data/Event.dart';
+import 'package:events_presentation/screens/event_list.dart';
+import 'package:events_presentation/screens/event_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:events_presentation/assets/constants.dart' as constants;
@@ -211,6 +213,10 @@ class EventFormScreen extends StatelessWidget {
 
                                     if(!this.isNew){
                                       updateEvent(event);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const EventScreen()),
+                                      );
                                     }
                                     else{
                                       addEvent(event);

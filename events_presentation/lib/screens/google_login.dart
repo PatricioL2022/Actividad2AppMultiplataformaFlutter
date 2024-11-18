@@ -41,8 +41,8 @@ class Login extends StatelessWidget {
         LocalDataSaver.saveName(user!.displayName.toString());
         LocalDataSaver.saveMail(user.email.toString());
         LocalDataSaver.saveImg(user.photoURL.toString());
-        name = googleUser!.displayName.toString();
-        email = googleUser!.email.toString();
+        name = user.displayName.toString();
+        email = user.email.toString();
         saveUserName();
         Navigator.push(
           context,
